@@ -6,12 +6,14 @@ namespace Mission08_Team0414.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly TaskContext _TaskContext;
+
+        public HomeController(TaskContext TaskContext)
         {
-            return View();
+            _TaskContext = TaskContext;
         }
 
-        public IActionResult Privacy()
+        public IActionResult Index()
         {
             return View();
         }
@@ -33,14 +35,21 @@ namespace Mission08_Team0414.Controllers
             return View();
         }
         //edit a task
-        public IActionResult Edit()
+        public IActionResult Edit(int id)
         {
-            return View();
+            var recordToEdit = _TaskContext.Task
+                .Single(x => x.TaskId == id);
+          
+
+            ViewBag.Categories = _TaskContext.Categories
+                .OrderBy(x => x.CategoryName)
+                .ToList();
+            return View("Tasks", recordToEdit);
         }
 
-        //public IActionResult Add()
-        //{
-        //    return View();
-        //}
+        public IActionResult Add()
+        {
+            return View("Tasks");
+        }
     }
 }
