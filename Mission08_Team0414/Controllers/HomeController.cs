@@ -39,8 +39,7 @@ namespace Mission08_Team0414.Controllers
         {
             var recordToEdit = _TaskContext.Task
                 .Single(x => x.TaskId == id);
-            //FirstOrDefault(x => x.MovieId == id);
-            //.Single(x => x.MovieId == id);
+          
 
             ViewBag.Categories = _TaskContext.Categories
                 .OrderBy(x => x.CategoryName)
