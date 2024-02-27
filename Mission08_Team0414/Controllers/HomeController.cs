@@ -16,25 +16,31 @@ namespace Mission08_Team0414.Controllers
             return View();
         }
 
+        //View that displays allows you to add tasks?
         public IActionResult Tasks()
         {
             return View();
         }
+
+        //View that displays all the quadrants with tasks?
         public IActionResult Quadrants()
         {
             return View();
         }
+        //delete a task
         public IActionResult Delete()
         {
             return View();
         }
+        //edit a task
         public IActionResult Edit()
         {
             return View();
         }
-        public IActionResult Add()
-        {
-            return View();
-        }
+
+        //public IActionResult Add()
+        //{
+        //    return View();
+        //}
     }
 }
