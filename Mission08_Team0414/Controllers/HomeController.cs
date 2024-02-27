@@ -36,7 +36,6 @@ namespace Mission08_Team0414.Controllers
         }
         //edit a task
         public IActionResult Edit(int id)
-
         {
             var recordToEdit = _TaskContext.Task
                 .Single(x => x.TaskId == id);
@@ -47,10 +46,17 @@ namespace Mission08_Team0414.Controllers
                 .ToList();
             return View("Tasks", recordToEdit);
         }
+
+<<<<<<<<< Temporary merge branch 1
+        //public IActionResult Add()
+        //{
+        //    return View();
+        //}
+=========
         public IActionResult Add()
         {
             return View("Tasks");
         }
-
+>>>>>>>>> Temporary merge branch 2
     }
 }
