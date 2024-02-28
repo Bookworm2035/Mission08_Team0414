@@ -2,8 +2,8 @@
 {
     public interface ITaskRepository
     {
-        List<Task> Tasks { get; }
+        List<System.Threading.Tasks.Task> Tasks { get; }
 
-        public void AddTask(Task task);
+        public void AddTask(System.Threading.Tasks.Task task);
     }
 }

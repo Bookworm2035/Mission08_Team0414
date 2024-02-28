@@ -33,11 +33,11 @@ namespace Mission08_Team0414.Controllers
             ViewBag.Categories = _TaskContext.Categories
                .OrderBy(x => x.CategoryName)
                .ToList();
-            return View("Tasks", new Task());
+            return base.View("Tasks", new System.Threading.Tasks.Task());
         }
 
         [HttpPost]
-        public IActionResult Tasks(Task response)
+        public IActionResult Tasks(System.Threading.Tasks.Task response)
         {
             if (ModelState.IsValid)
             {
@@ -76,7 +76,7 @@ namespace Mission08_Team0414.Controllers
             return View(recordToDelete);
         }
         [HttpPost]
-        public IActionResult Delete(Task task)
+        public IActionResult Delete(System.Threading.Tasks.Task task)
         {
             //actually delete it
             _TaskContext.Movies.Remove(task);
@@ -99,7 +99,7 @@ namespace Mission08_Team0414.Controllers
             return View("Tasks", recordToEdit);
         }
         [HttpPost]
-        public IActionResult Edit(Task updateresponse)
+        public IActionResult Edit(System.Threading.Tasks.Task updateresponse)
         {
             //update the datebase with the new edits
             _TaskContext.Update(updateresponse);
