@@ -11,11 +11,11 @@
         }
 
         //this might actually be categories not tasks? I am a little confused on this
-        public List<Task> Tasks => _context.Tasks.ToList();
+        public List<System.Threading.Tasks.Task> Tasks => _context.Tasks.ToList();
 
 
         //we can call this in the controller to save/updated database
-        public void AddTask(Task task)
+        public void AddTask(System.Threading.Tasks.Task task)
         {
             _context.Add(task);
             _context.SaveChanges();
