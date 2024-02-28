@@ -6,7 +6,14 @@ namespace Mission08_Team0414.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly TaskContext _TaskContext;
+        private TaskContext _TaskContext;
+        //This is whatever the database is named?
+        private ITaskRepository _repo;
+
+        public HomeController(ITaskRepository temp)
+        {
+            _repo = temp;
+        }
 
         public HomeController(TaskContext TaskContext)
         {
