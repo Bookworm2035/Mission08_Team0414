@@ -5,3 +5,54 @@
 }
 
 <h2>Add tasks page</h2>
+
+TASKS
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<h2>Task</h2>
+
+<!--ADD ASP-FOR TAGS-->
+
+<form method="post">
+    <label>Task:</label>
+    <input required>
+    <br><br>
+
+    <label>Due Date:</label>
+    <input>
+    <br><br>
+
+    <label>Quadrant:</label>
+    <input required>
+    <br><br>
+
+    <label>Category:</label>
+    <select required>
+        <option value="" disabled selected>Select Category</option>
+        <option value="Home">Home</option>
+        <option value="School">School</option>
+        <option value="Work">Work</option>
+        <option value="Church">Church</option>
+    </select>
+    <br><br>
+
+    <label>Completed:</label>
+    <select>
+        <option value="" disabled selected></option>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+    </select>
+    <br><br>
+
+    <button type="button">Submit</button>
+
+</form>
+
+
+
