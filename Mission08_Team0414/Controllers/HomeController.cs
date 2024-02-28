@@ -19,22 +19,65 @@ namespace Mission08_Team0414.Controllers
         }
 
         //View that displays allows you to add tasks?
+        [HttpGet]
         public IActionResult Tasks()
         {
-            return View();
+            ViewBag.Categories = _TaskContext.Categories
+               .OrderBy(x => x.CategoryName)
+               .ToList();
+            return View("Tasks", new Task());
         }
 
+        [HttpPost]
+        public IActionResult Tasks(Task response)
+        {
+            if (ModelState.IsValid)
+            {
+                //confirm that the submission meets requirements
+                _TaskContext.Movies.Add(response);
+                _TaskContext.SaveChanges();
+                return View("Confirmation", response);
+
+            }
+            else
+            {
+                //if bad return error meessages
+                ViewBag.Categories = _TaskContext.Categories
+                    .OrderBy(x => x.CategoryName)
+                    .ToList();
+                return View(response);
+            }
+        }
         //View that displays all the quadrants with tasks?
         public IActionResult Quadrants()
         {
-            return View();
+            //display database
+            var tasks = _TaskContext.Tasks.Include(m => m.Category)
+                         //.Where(x => x.COLUM == value)
+                         .OrderBy(x => x.TaskId).ToList();
+            return View(tasks);
         }
         //delete a task
-        public IActionResult Delete()
+        [HttpGet]
+        public IActionResult Delete(int id)
         {
-            return View();
+            //delete the record by ID num
+            var recordToDelete = _TaskContext.Tasks
+                .Single(x => x.TaskId == id);
+
+            return View(recordToDelete);
+        }
+        [HttpPost]
+        public IActionResult Delete(Task task)
+        {
+            //actually delete it
+            _TaskContext.Movies.Remove(task);
+            _TaskContext.SaveChanges();
+
+            return RedirectToAction("Quadrant");
         }
         //edit a task
+        [HttpGet]
         public IActionResult Edit(int id)
 
         {
@@ -46,6 +89,15 @@ namespace Mission08_Team0414.Controllers
                 .OrderBy(x => x.CategoryName)
                 .ToList();
             return View("Tasks", recordToEdit);
+        }
+        [HttpPost]
+        public IActionResult Edit(Task updateresponse)
+        {
+            //update the datebase with the new edits
+            _TaskContext.Update(updateresponse);
+            _TaskContext.SaveChanges();
+            //return to view
+            return RedirectToAction("Quadrant", "Home");
         }
         public IActionResult Add()
         {
