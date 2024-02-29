@@ -6,7 +6,7 @@ namespace Mission08_Team0414.Controllers
 {
     public class HomeController : Controller
     {
-        private TaskContext _TaskContext;
+        //private TaskContext _TaskContext;
         //This is whatever the database is named?
         private ITaskRepository _repo;
 
@@ -14,12 +14,6 @@ namespace Mission08_Team0414.Controllers
         {
             _repo = temp;
         }
-
-        public HomeController(TaskContext TaskContext)
-        {
-            _TaskContext = TaskContext;
-        }
-  
 
         public IActionResult Index()
         {
@@ -79,7 +73,7 @@ namespace Mission08_Team0414.Controllers
         public IActionResult Delete(Task task)
         {
             //actually delete it
-            _TaskContext.Movies.Remove(task);
+            _TaskContext.Task.Remove(task);
             _TaskContext.SaveChanges();
 
             return RedirectToAction("Quadrant");
