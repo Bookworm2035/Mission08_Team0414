@@ -20,8 +20,6 @@ namespace Mission08_Team0414.Controllers
             return View();
         }
 
-        //View that displays allows you to add tasks?
-        [HttpGet]
         public IActionResult Tasks()
         {
             ViewBag.Category = _TaskContext.Category
@@ -36,8 +34,12 @@ namespace Mission08_Team0414.Controllers
             if (ModelState.IsValid)
             {
                 //confirm that the submission meets requirements
+                ViewBag.Category = _TaskContext.Category
+                    .OrderBy(x => x.CategoryName)
+                    .ToList();
                 _TaskContext.AddSubmittedTask(response);
-               return View("Confirmation", response);
+
+                return View("Confirmation", response);
 
             }
             else
@@ -50,7 +52,7 @@ namespace Mission08_Team0414.Controllers
             }
         }
 
-
+        [HttpGet]
         //View that displays all the quadrants with tasks?
         public IActionResult Quadrants()
         {
@@ -58,7 +60,7 @@ namespace Mission08_Team0414.Controllers
             var SubmittedTasks = _TaskContext.SubmittedTasks/*.Include(c =>c.Category)*/
                          .Where(x => x.IsCompleted == false)
                          .OrderBy(x => x.TaskId).ToList();
-            return View("Tasks");
+            return View();
         }
         ////delete a task
         //[HttpGet]
@@ -107,5 +109,21 @@ namespace Mission08_Team0414.Controllers
         //    return View("Tasks");
         //}
 
-    }
-}
+    //        ViewBag.Categories = _TaskContext.Categories
+    //            .OrderBy(x => x.CategoryName)
+    //            .ToList();
+    //        return View("Tasks", recordToEdit);
+    //    }
+    //    [HttpPost]
+    //    public IActionResult Edit(Task updateresponse)
+    //    {
+    //        //update the datebase with the new edits
+    //        _TaskContext.Update(updateresponse);
+    //        _TaskContext.SaveChanges();
+    //        //return to view
+    //        return RedirectToAction("Quadrant", "Home");
+    //    }
+    //    public IActionResult Add()
+    //    {
+    //        return View("Tasks");
+    //    }

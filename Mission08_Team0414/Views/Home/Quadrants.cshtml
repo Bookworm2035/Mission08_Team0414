@@ -6,5 +6,83 @@
 
 <h2>Put quadrants here</h2>
 
-@* 
-We need to add in code here that connects to the databse? *@
+<div class="container">
+    <div class="row">
+        <div class="col-4 border">
+            Time Management Matrix
+        </div>
+        <div class="col-4 border">
+            Urgent
+        </div>
+        <div class="col-4 border">
+            Not Urgent
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-4 border">
+            Important
+        </div>
+        <div class="col-4 border">
+            Important and Urgent
+        </div>
+        <div class="col-4 border">
+            Important Not Urgent
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-4 border">
+            Not Important
+        </div>
+        <div class="col-4 border">
+            Urgent not Important
+        </div>
+        <div class="col-4 border">
+            Not urgent not important
+        </div>
+    </div>
+</div>
+
+<!-- Example of how to add update and delete buttons for each task -->
+<div class="container">
+    <div class="row">
+        <div class="col-4 border">
+            Task 1
+            <br>
+            <button onclick="updateTask(1)">Update</button>
+            <button onclick="deleteTask(1)">Delete</button>
+        </div>
+        <div class="col-4 border">
+            Task 2
+            <br>
+            <button onclick="updateTask(2)">Update</button>
+            <button onclick="deleteTask(2)">Delete</button>
+        </div>
+        <div class="col-4 border">
+            Task 3
+            <br>
+            <button onclick="updateTask(3)">Update</button>
+            <button onclick="deleteTask(3)">Delete</button>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript functions for update and delete -->
+<script>
+    function updateTask(taskId) {
+        // Add logic to update task with taskId
+        alert("Update Task " + taskId);
+    }
+
+    function deleteTask(taskId) {
+        // Add logic to delete task with taskId
+        alert("Delete Task " + taskId);
+    }
+</script>
+
+
+
+
