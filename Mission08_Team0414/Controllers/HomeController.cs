@@ -36,8 +36,12 @@ namespace Mission08_Team0414.Controllers
             if (ModelState.IsValid)
             {
                 //confirm that the submission meets requirements
+                ViewBag.Category = _TaskContext.Category
+                    .OrderBy(x => x.CategoryName)
+                    .ToList();
                 _TaskContext.AddSubmittedTask(response);
-               return View("Confirmation", response);
+
+                return View("Confirmation", response);
 
             }
             else
