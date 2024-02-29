@@ -36,8 +36,12 @@ namespace Mission08_Team0414.Controllers
             if (ModelState.IsValid)
             {
                 //confirm that the submission meets requirements
+                ViewBag.Category = _TaskContext.Category
+                    .OrderBy(x => x.CategoryName)
+                    .ToList();
                 _TaskContext.AddSubmittedTask(response);
-               return View("Confirmation", response);
+
+                return View("Confirmation", response);
 
             }
             else
@@ -50,7 +54,7 @@ namespace Mission08_Team0414.Controllers
             }
         }
 
-
+        [HttpGet]
         //View that displays all the quadrants with tasks?
         public IActionResult Quadrants()
         {
@@ -58,7 +62,7 @@ namespace Mission08_Team0414.Controllers
             var SubmittedTasks = _TaskContext.SubmittedTasks/*.Include(c =>c.Category)*/
                          .Where(x => x.IsCompleted == false)
                          .OrderBy(x => x.TaskId).ToList();
-            return View("Tasks");
+            return View();
         }
         ////delete a task
         //[HttpGet]
