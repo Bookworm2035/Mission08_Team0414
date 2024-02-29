@@ -2,8 +2,11 @@
 {
     public interface ITaskRepository
     {
-        List<Task> Tasks { get; }
+        List<SubmittedTask> SubmittedTasks { get; }
 
-        public void AddTask(Task task);
+        public void AddSubmittedTask(SubmittedTask task);
+
+        //we need it for both tables
+        List<Category> Category { get; }
     }
 }

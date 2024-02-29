@@ -4,47 +4,38 @@
 @{
 }
 
-<h2>Add tasks page</h2>
-
-TASKS
-
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-
+@model SubmittedTask
 
 <h2>Task</h2>
 
-<!--ADD ASP-FOR TAGS-->
-
 <form method="post">
-    <label>Task:</label>
-    <input required>
+    <input asp-for="TaskId" type="hidden">
+
+    <label asp-for="TaskName">Task:</label>
+    <input asp-for="TaskName" required>
     <br><br>
 
-    <label>Due Date:</label>
-    <input>
+    <label asp-for="DueDate">Due Date:</label>
+    <input asp-for="DueDate" type="date">
     <br><br>
 
-    <label>Quadrant:</label>
-    <input required>
+    <label asp-for="Quadrant">Quadrant:</label>
+    <input asp-for="Quadrant" type="number" min="1" max="4" required>
     <br><br>
 
-    <label>Category:</label>
-    <select required>
-        <option value="" disabled selected>Select Category</option>
-        <option value="Home">Home</option>
-        <option value="School">School</option>
-        <option value="Work">Work</option>
-        <option value="Church">Church</option>
+    <label asp-for="CategoryId">Category:</label>
+    <select asp-for="CategoryId" required>
+        <option value="" disabled selected>Select Option</option>
+        @foreach (Category c in ViewBag.Category)
+        {
+            <option value="@c.CategoryId>">@c.CategoryName</option>
+        }
     </select>
     <br><br>
 
-    <label>Completed:</label>
+    <label asp-for="IsCompleted">Completed:</label>
     <select>
-        <option value="" disabled selected></option>
+        <option value="" disabled selected>Select Option</option>
         <option value="true">Yes</option>
         <option value="false">No</option>
     </select>
@@ -52,7 +43,10 @@ TASKS
 
     <button type="button">Submit</button>
 
+    <div asp-validation-summary="All"></div>
+
 </form>
+
 
 
 

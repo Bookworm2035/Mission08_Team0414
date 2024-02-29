@@ -1,24 +1,31 @@
-﻿namespace Mission08_Team0414.Models
+﻿
+using SQLitePCL;
+
+namespace Mission08_Team0414.Models
 {
-    //public class EFTaskRepository : ITaskRepository
-    //{
-    //    //update this with the database file name
-    //    private PUT_DATABASE_FILE_NAME_HERE _context;
+    public class EFTaskRepository : ITaskRepository
+    {
+        private SubmittedTaskContext _context;
+        public EFTaskRepository(SubmittedTaskContext temp)
+        {
+            _context = temp;
+        }
 
-    //    public EFTaskRepository(PUT_DATABASE_FILE_NAME_HERE temp)
-    //    {
-    //        _context = temp;
-    //    }
+        public List<SubmittedTask> SubmittedTasks => _context.SubmittedTasks.ToList();
+        public List<Category> Category => _context.Category.ToList();
 
-    //    //this might actually be categories not tasks? I am a little confused on this
-    //    public List<Task> Tasks => _context.Tasks.ToList();
+        //List<SubmittedTask> ITaskRepository.SubmittedTasks => throw new NotImplementedException();
 
+        void ITaskRepository.AddSubmittedTask(SubmittedTask task)
+        {
+            _context.Add(task);
+            _context.SaveChanges();
+        }
+        //public void AddTask(SubmittedTask task)
+        //{
+        //    _context.Add(task);
+        //    _context.SaveChanges();
+        //}
 
-    //    //we can call this in the controller to save/updated database
-    //    public void AddTask(Task task)
-    //    {
-    //        _context.Add(task);
-    //        _context.SaveChanges();
-    //    }
-    //}
+    }
 }
