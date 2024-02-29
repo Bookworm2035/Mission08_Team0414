@@ -12,7 +12,7 @@ namespace Mission08_Team0414.Models
         }
 
         public List<Task> Tasks => _context.Tasks.ToList();
-
+        public List<Category> Category => _context.Category.ToList();
         public void AddTask(Task task)
         {
             _context.Add(task);

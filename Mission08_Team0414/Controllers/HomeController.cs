@@ -19,15 +19,15 @@ namespace Mission08_Team0414.Controllers
             return View();
         }
 
-        ////View that displays allows you to add tasks?
-        //[HttpGet]
-        //public IActionResult Tasks()
-        //{
-        //    ViewBag.Categories = _TaskContext.Categories
-        //       .OrderBy(x => x.CategoryName)
-        //       .ToList();
-        //    return base.View("Tasks", new System.Threading.Tasks.Task());
-        //}
+        //View that displays allows you to add tasks?
+        [HttpGet]
+        public IActionResult Tasks()
+        {
+            ViewBag.Category = _TaskContext.Category
+               .OrderBy(x => x.CategoryName)
+               .ToList();
+            return base.View("Tasks", new Models.Task());
+        }
 
         //[HttpPost]
         //public IActionResult Tasks(System.Threading.Tasks.Task response)

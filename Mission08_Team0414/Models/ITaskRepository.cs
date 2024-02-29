@@ -3,5 +3,8 @@
     public interface ITaskRepository
     {
         List<Task> Tasks { get; }
+
+        //we need it for both tables
+        List<Category> Category { get; }
     }
 }
