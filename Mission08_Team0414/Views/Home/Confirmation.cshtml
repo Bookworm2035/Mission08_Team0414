@@ -1,0 +1,13 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model SubmittedTask
+
+<h2>Task <b>@Model.TaskName</b> recieved! Way to take a step toward productivity!</h2>
+<br />
+<a asp-area="" asp-controller="Home" asp-action="Tasks">Add another task</a>
+<br />
+<a asp-area="" asp-controller="Home" asp-action="Quadrants">View all tasks in quadrants</a>
