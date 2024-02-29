@@ -10,6 +10,8 @@ builder.Services.AddDbContext<TaskContext>(options =>
     options.UseSqlite(builder.Configuration["ConnectionStrings:MissionEightConnection"]);
 });
 
+builder.Services.AddScoped<ITaskRepository, EFTaskRepository>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

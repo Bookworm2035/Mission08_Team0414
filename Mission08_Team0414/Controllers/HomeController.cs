@@ -6,18 +6,11 @@ namespace Mission08_Team0414.Controllers
 {
     public class HomeController : Controller
     {
-        private TaskContext _TaskContext;
-        ////This is whatever the database is named?
-        //private ITaskRepository _repo;
+        private ITaskRepository _TaskContext;
 
-        //public HomeController(ITaskRepository temp)
-        //{
-        //    _repo = temp;
-        //}
-
-        public HomeController(TaskContext TaskContext)
+        public HomeController(ITaskRepository temp)
         {
-            _TaskContext = TaskContext;
+            _TaskContext = temp;
         }
   
 
@@ -91,7 +84,7 @@ namespace Mission08_Team0414.Controllers
         //{
         //    var recordToEdit = _TaskContext.Task
         //        .Single(x => x.TaskId == id);
-          
+
 
         //    ViewBag.Categories = _TaskContext.Categories
         //        .OrderBy(x => x.CategoryName)
