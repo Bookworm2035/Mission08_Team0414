@@ -37,7 +37,7 @@ namespace Mission08_Team0414.Controllers
             {
                 //confirm that the submission meets requirements
                 _TaskContext.AddSubmittedTask(response);
-               return View("Quadrants", response);
+               return View("Index", response);
 
             }
             else
@@ -55,8 +55,8 @@ namespace Mission08_Team0414.Controllers
         public IActionResult Quadrants()
         {
             //display database
-            var SubmittedTasks = _TaskContext.SubmittedTasks //.Include(m =>m.Category)
-                         //.Where(x => x.COLUM == value)
+            var SubmittedTasks = _TaskContext.SubmittedTasks/*.Include(c =>c.Category)*/
+                         .Where(x => x.IsCompleted == false)
                          .OrderBy(x => x.TaskId).ToList();
             return View("Tasks");
         }

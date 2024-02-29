@@ -4,7 +4,7 @@
 @{
 }
 
-@model Task
+@model SubmittedTask
 
 <h2>Task</h2>
 
@@ -26,7 +26,7 @@
     <label asp-for="CategoryId">Category:</label>
     <select asp-for="CategoryId" required>
         <option value="" disabled selected>Select Option</option>
-        @foreach (Category c in ViewBag.Categories)
+        @foreach (Category c in ViewBag.Category)
         {
             <option value="@c.CategoryId>">@c.CategoryName</option>
         }
