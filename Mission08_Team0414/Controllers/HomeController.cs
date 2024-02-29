@@ -37,7 +37,7 @@ namespace Mission08_Team0414.Controllers
             {
                 //confirm that the submission meets requirements
                 _TaskContext.AddSubmittedTask(response);
-               return View("Index", response);
+               return View("Confirmation", response);
 
             }
             else

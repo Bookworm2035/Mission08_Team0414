@@ -16,7 +16,7 @@ namespace Mission08_Team0414.Models
 
         //List<SubmittedTask> ITaskRepository.SubmittedTasks => throw new NotImplementedException();
 
-        void ITaskRepository.AddSubmittedTask(SubmittedTask task)
+        public void AddSubmittedTask(SubmittedTask task)
         {
             _context.Add(task);
             _context.SaveChanges();
