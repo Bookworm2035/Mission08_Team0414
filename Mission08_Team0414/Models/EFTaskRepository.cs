@@ -5,18 +5,27 @@ namespace Mission08_Team0414.Models
 {
     public class EFTaskRepository : ITaskRepository
     {
-        private TaskContext _context;
-        public EFTaskRepository(TaskContext temp)
+        private SubmittedTaskContext _context;
+        public EFTaskRepository(SubmittedTaskContext temp)
         {
             _context = temp;
         }
 
-        public List<Task> Tasks => _context.Tasks.ToList();
+        public List<SubmittedTask> SubmittedTasks => _context.SubmittedTasks.ToList();
         public List<Category> Category => _context.Category.ToList();
-        public void AddTask(Task task)
+
+        //List<SubmittedTask> ITaskRepository.SubmittedTasks => throw new NotImplementedException();
+
+        void ITaskRepository.AddSubmittedTask(SubmittedTask task)
         {
             _context.Add(task);
             _context.SaveChanges();
         }
+        //public void AddTask(SubmittedTask task)
+        //{
+        //    _context.Add(task);
+        //    _context.SaveChanges();
+        //}
+
     }
 }

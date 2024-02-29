@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<TaskContext>(options =>
+builder.Services.AddDbContext<SubmittedTaskContext>(options =>
 {
     options.UseSqlite(builder.Configuration["ConnectionStrings:MissionEightConnection"]);
 });

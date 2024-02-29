@@ -10,7 +10,7 @@ using Mission08_Team0414.Models;
 
 namespace Mission08_Team0414.Migrations
 {
-    [DbContext(typeof(TaskContext))]
+    [DbContext(typeof(SubmittedTaskContext))]
     [Migration("20240229000349_Initial")]
     partial class Initial
     {

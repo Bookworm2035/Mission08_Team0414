@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Mission08_Team0414.Models;
 using System.Diagnostics;
+using Microsoft.EntityFrameworkCore;
 
 namespace Mission08_Team0414.Controllers
 {
@@ -26,38 +27,39 @@ namespace Mission08_Team0414.Controllers
             ViewBag.Category = _TaskContext.Category
                .OrderBy(x => x.CategoryName)
                .ToList();
-            return base.View("Tasks", new Models.Task());
+            return base.View("Tasks", new SubmittedTask());
         }
 
-        //[HttpPost]
-        //public IActionResult Tasks(System.Threading.Tasks.Task response)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        //confirm that the submission meets requirements
-        //        _TaskContext.Movies.Add(response);
-        //        _TaskContext.SaveChanges();
-        //        return View("Confirmation", response);
+        [HttpPost]
+        public IActionResult Tasks(SubmittedTask response)
+        {
+            if (ModelState.IsValid)
+            {
+                //confirm that the submission meets requirements
+                _TaskContext.AddSubmittedTask(response);
+               return View("Quadrants", response);
 
-        //    }
-        //    else
-        //    {
-        //        //if bad return error meessages
-        //        ViewBag.Categories = _TaskContext.Categories
-        //            .OrderBy(x => x.CategoryName)
-        //            .ToList();
-        //        return View(response);
-        //    }
-        //}
-        ////View that displays all the quadrants with tasks?
-        //public IActionResult Quadrants()
-        //{
-        //    //display database
-        //    var tasks = _TaskContext.Tasks.Include(m => m.Category)
-        //                 //.Where(x => x.COLUM == value)
-        //                 .OrderBy(x => x.TaskId).ToList();
-        //    return View(tasks);
-        //}
+            }
+            else
+            {
+                //if bad return error meessages
+                ViewBag.Category = _TaskContext.Category
+                    .OrderBy(x => x.CategoryName)
+                    .ToList();
+                return View(response);
+            }
+        }
+
+
+        //View that displays all the quadrants with tasks?
+        public IActionResult Quadrants()
+        {
+            //display database
+            var SubmittedTasks = _TaskContext.SubmittedTasks //.Include(m =>m.Category)
+                         //.Where(x => x.COLUM == value)
+                         .OrderBy(x => x.TaskId).ToList();
+            return View("Tasks");
+        }
         ////delete a task
         //[HttpGet]
         //public IActionResult Delete(int id)
