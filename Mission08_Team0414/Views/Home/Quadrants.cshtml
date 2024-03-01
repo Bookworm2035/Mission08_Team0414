@@ -27,7 +27,7 @@
             Important
         </div>
         <div class="col-4 border">
-            @foreach (var task in Model)
+            @foreach (var task in Model.Where(task => task.Quadrant == 1))
             {
                 <div>@task.TaskName</div>
                 <button class="btn btn-primary" onclick="window.location.href='@Url.Action("Tasks", "Home", new { taskId = task.TaskId })'">Edit</button>
@@ -36,7 +36,7 @@
             }
         </div>
         <div class="col-4 border">
-            @foreach (var task in Model)
+            @foreach (var task in Model.Where(task => task.Quadrant == 2))
             {
                 <div>@task.TaskName</div>
                 <button class="btn btn-primary" onclick="window.location.href='@Url.Action("Tasks", "Home", new { taskId = task.TaskId })'">Edit</button>
@@ -52,7 +52,7 @@
             Not Important
         </div>
         <div class="col-4 border">
-            @foreach (var task in Model)
+            @foreach (var task in Model.Where(task => task.Quadrant == 3))
             {
                 <div>@task.TaskName</div>
                 <button class="btn btn-primary" onclick="window.location.href='@Url.Action("Tasks", "Home", new { taskId = task.TaskId })'">Edit</button>
@@ -61,7 +61,7 @@
             }
         </div>
         <div class="col-4 border">
-            @foreach (var task in Model)
+            @foreach (var task in Model.Where(task => task.Quadrant == 4))
             {
                 <div>@task.TaskName</div>
                 <button class="btn btn-primary" onclick="window.location.href='@Url.Action("Tasks", "Home", new { taskId = task.TaskId })'">Edit</button>
