@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Mission08_Team0414.Models;
 using System.Diagnostics;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace Mission08_Team0414.Controllers
 {
@@ -80,24 +81,35 @@ namespace Mission08_Team0414.Controllers
 
             return RedirectToAction("Quadrant");
         }
+
+
+        //edit a task
+        [HttpGet]
+        public IActionResult Edit(int id)
+
+        {
+            var recordToEdit = _TaskContext.SubmittedTasks
+                .Single(x => x.TaskId == id);
+
+
+            ViewBag.Categories = _TaskContext.Category
+                .OrderBy(x => x.CategoryName)
+                .ToList();
+            return View("Tasks", recordToEdit);
+        }
+
+        public IActionResult Edit(SubmittedTask updateresponse)
+        {
+            //update the datebase with the new edits
+            _TaskContext.EditSubmittedTask(updateresponse);
+            //return to view
+            return RedirectToAction("Quadrant", "Home");
+        }
     }
 
 }
 
-        ////edit a task
-        //[HttpGet]
-        //public IActionResult Edit(int id)
-
-//{
-//    var recordToEdit = _TaskContext.Task
-//        .Single(x => x.TaskId == id);
-
-
-//    ViewBag.Categories = _TaskContext.Categories
-//        .OrderBy(x => x.CategoryName)
-//        .ToList();
-//    return View("Tasks", recordToEdit);
-//}
+        
 //[HttpPost]
 //public IActionResult Edit(System.Threading.Tasks.Task updateresponse)
 //{
@@ -118,14 +130,7 @@ namespace Mission08_Team0414.Controllers
 //        return View("Tasks", recordToEdit);
 //    }
 //    [HttpPost]
-//    public IActionResult Edit(Task updateresponse)
-//    {
-//        //update the datebase with the new edits
-//        _TaskContext.Update(updateresponse);
-//        _TaskContext.SaveChanges();
-//        //return to view
-//        return RedirectToAction("Quadrant", "Home");
-//    }
+//    
 //    public IActionResult Add()
 //    {
 //        return View("Tasks");
