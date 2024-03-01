@@ -68,5 +68,14 @@
     </div>
 </div>
 
-
+<script>
+    // only uncompleted tasks are on this view
+    $(document).ready(function () {
+        $('select[name="IsCompleted"]').change(function () {
+            if ($(this).val() === 'true') {
+                window.location.href = '@Url.Action("Quadrants", "Home")';
+            }
+        });
+    });
+</script>
 
