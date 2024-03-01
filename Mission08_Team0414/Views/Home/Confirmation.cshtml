@@ -6,8 +6,12 @@
 
 @model SubmittedTask
 
+<!--confirm to user that their task was successfully submitted -->
+
 <h2>Task <b>@Model.TaskName</b> recieved! Way to take a step toward productivity!</h2>
 <br />
+
+<!-- links to add another task or view all tasks --> 
 <a asp-area="" asp-controller="Home" asp-action="Tasks">Add another task</a>
 <br />
 <a asp-area="" asp-controller="Home" asp-action="Quadrants">View all tasks in quadrants</a>
