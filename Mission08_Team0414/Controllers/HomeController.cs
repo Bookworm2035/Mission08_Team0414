@@ -13,7 +13,7 @@ namespace Mission08_Team0414.Controllers
         {
             _TaskContext = temp;
         }
-  
+
 
         public IActionResult Index()
         {
@@ -62,6 +62,8 @@ namespace Mission08_Team0414.Controllers
                          .OrderBy(x => x.TaskId).ToList();
             return View();
         }
+    }
+}
         ////delete a task
         //[HttpGet]
         //public IActionResult Delete(int id)
