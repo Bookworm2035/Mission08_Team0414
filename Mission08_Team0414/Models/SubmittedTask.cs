@@ -8,7 +8,7 @@ namespace Mission08_Team0414.Models
         [Key]
         public int TaskId { get; set; }
         [Required(ErrorMessage = "Sorry, you must input a task")]
-        public string TaskName { get; set; }
+        public string? TaskName { get; set; }
         public string? DueDate { get; set; }
         [Required(ErrorMessage = "Sorry, you must input a quadrant")]
         public int Quadrant { get; set; }
