@@ -13,7 +13,7 @@ namespace Mission08_Team0414.Controllers
         {
             _TaskContext = temp;
         }
-  
+
 
         public IActionResult Index()
         {
@@ -56,12 +56,14 @@ namespace Mission08_Team0414.Controllers
         //View that displays all the quadrants with tasks?
         public IActionResult Quadrants()
         {
-            //display database
-            var SubmittedTasks = _TaskContext.SubmittedTasks/*.Include(c =>c.Category)*/
+            var SubmittedTasks = _TaskContext.SubmittedTasks
                          .Where(x => x.IsCompleted == false)
                          .OrderBy(x => x.TaskId).ToList();
-            return View();
+            return View(SubmittedTasks);
         }
+
+    }
+}
         ////delete a task
         //[HttpGet]
         //public IActionResult Delete(int id)
