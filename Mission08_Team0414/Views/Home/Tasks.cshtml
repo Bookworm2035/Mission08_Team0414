@@ -20,14 +20,15 @@
     <br><br>
 
     <label asp-for="Quadrant">Quadrant:</label>
-    <select>
+    <select asp-for="Quadrant">
         <option value="" disabled selected>Select Option</option>
         <option value="1">Urgent and Important</option>
         <option value="2">Important and Not Urgent</option>
         <option value="3">Urgent and Not Important</option>
-        <option value="3">Not Urgent and Not Important</option>
+        <option value="4">Not Urgent and Not Important</option>
     </select>
 
+    <input type="hidden" asp-for="CategoryName" />
     <label asp-for="CategoryId">Category:</label>
     <select asp-for="CategoryId" required>
         <option value="" disabled selected>Select Option</option>
@@ -39,10 +40,10 @@
     <br><br>
 
     <label asp-for="IsCompleted">Completed:</label>
-    <select>
+    <select asp-for="IsCompleted">
         <option value="" disabled selected>Select Option</option>
-        <option value="true">Yes</option>
-        <option value="false">No</option>
+        <option value=true>Yes</option>
+        <option value=false>No</option>
     </select>
     <br><br>
 
