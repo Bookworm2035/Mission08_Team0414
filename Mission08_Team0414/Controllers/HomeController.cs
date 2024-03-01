@@ -84,7 +84,6 @@ namespace Mission08_Team0414.Controllers
             return RedirectToAction("Quadrant", "Home");
         }
 
-
         //edit a task
         [HttpGet]
         public IActionResult Edit(int id)
@@ -99,7 +98,7 @@ namespace Mission08_Team0414.Controllers
                 .ToList();
             return View("Tasks", recordToEdit);
         }
-
+        [HttpPost]
         public IActionResult Edit(SubmittedTask updateresponse)
         {
             //update the datebase with the new edits
@@ -107,33 +106,6 @@ namespace Mission08_Team0414.Controllers
             //return to view
             return RedirectToAction("Quadrant", "Home");
         }
+
     }
-
 }
-
-        
-//[HttpPost]
-//public IActionResult Edit(System.Threading.Tasks.Task updateresponse)
-//{
-//    //update the datebase with the new edits
-//    _TaskContext.Update(updateresponse);
-//    _TaskContext.SaveChanges();
-//    //return to view
-//    return RedirectToAction("Quadrant", "Home");
-//}
-//public IActionResult Add()
-//{
-//    return View("Tasks");
-//}
-
-//        ViewBag.Categories = _TaskContext.Categories
-//            .OrderBy(x => x.CategoryName)
-//            .ToList();
-//        return View("Tasks", recordToEdit);
-//    }
-//    [HttpPost]
-//    
-//    public IActionResult Add()
-//    {
-//        return View("Tasks");
-//    }
