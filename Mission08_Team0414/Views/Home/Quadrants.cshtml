@@ -31,7 +31,8 @@
             {
                 <div>@task.TaskName</div>
                 <button class="btn btn-primary" onclick="window.location.href='@Url.Action("Tasks", "Home", new { taskId = task.TaskId })'">Edit</button>
-                <button class="btn btn-danger" onclick="window.location.href='@Url.Action("Delete", "Home", new { taskId = task.TaskId })'">Delete</button>
+                @* <button class="btn btn-danger" onclick="window.location.href='@Url.Action("Delete", "Home", new { taskId = task.TaskId })'">Delete</button> *@
+                <a class="btn btn-info" asp-controller="Home" asp-action="Delete" asp-route-id="@task.TaskId">Delete</a>
             }
         </div>
         <div class="col-4 border">
@@ -39,7 +40,8 @@
             {
                 <div>@task.TaskName</div>
                 <button class="btn btn-primary" onclick="window.location.href='@Url.Action("Tasks", "Home", new { taskId = task.TaskId })'">Edit</button>
-                <button class="btn btn-danger" onclick="window.location.href='@Url.Action("Delete", "Home", new { taskId = task.TaskId })'">Delete</button>
+                <a class="btn btn-info" asp-controller="Home" asp-action="Delete" asp-route-id="@task.TaskId">Delete</a>
+               @*  <button class="btn btn-danger" onclick="window.location.href='@Url.Action("Delete", "Home", new { taskId = task.TaskId })'">Delete</button> *@
             }
         </div>
     </div>
@@ -54,7 +56,8 @@
             {
                 <div>@task.TaskName</div>
                 <button class="btn btn-primary" onclick="window.location.href='@Url.Action("Tasks", "Home", new { taskId = task.TaskId })'">Edit</button>
-                <button class="btn btn-danger" onclick="window.location.href='@Url.Action("Delete", "Home", new { taskId = task.TaskId })'">Delete</button>
+                @* <button class="btn btn-danger" onclick="window.location.href='@Url.Action("Delete", "Home", new { taskId = task.TaskId })'">Delete</button> *@
+                <a class="btn btn-info" asp-controller="Home" asp-action="Delete" asp-route-id="@task.TaskId">Delete</a>
             }
         </div>
         <div class="col-4 border">
@@ -62,7 +65,8 @@
             {
                 <div>@task.TaskName</div>
                 <button class="btn btn-primary" onclick="window.location.href='@Url.Action("Tasks", "Home", new { taskId = task.TaskId })'">Edit</button>
-                <button class="btn btn-danger" onclick="window.location.href='@Url.Action("Delete", "Home", new { taskId = task.TaskId })'">Delete</button>
+               @*  <button class="btn btn-danger" onclick="window.location.href='@Url.Action("Delete", "Home", new { taskId = task.TaskId })'">Delete</button> *@
+                <a class="btn btn-info" asp-controller="Home" asp-action="Delete" asp-route-id="@task.TaskId">Delete</a>
             }
         </div>
     </div>

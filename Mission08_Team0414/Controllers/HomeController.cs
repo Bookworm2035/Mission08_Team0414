@@ -74,12 +74,14 @@ namespace Mission08_Team0414.Controllers
             return View(recordToDelete);
         }
         [HttpPost]
-        public IActionResult Delete(SubmittedTask task)
+        public IActionResult Delete2(SubmittedTask task)
         {
+            var recordToDelete = _TaskContext.SubmittedTasks
+                .Single(x => x.TaskId == task.TaskId);
             //actually delete it
-            _TaskContext.DeleteSubmittedTask(task);
+            _TaskContext.DeleteSubmittedTask(recordToDelete);
 
-            return RedirectToAction("Quadrant");
+            return RedirectToAction("Quadrant", "Home");
         }
 
 

@@ -9,7 +9,7 @@
 
 <h2>Are you sure you want to delete @Model.TaskName?</h2>
 
-<form method="post">
+<form asp-action="Delete2" method="post">
     <input type="hidden" asp-for="TaskId" />
 
     <button type="submit">Delete</button>
