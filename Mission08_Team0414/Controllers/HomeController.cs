@@ -86,7 +86,7 @@ namespace Mission08_Team0414.Controllers
             //actually delete it
             _TaskContext.DeleteSubmittedTask(recordToDelete);
             //goes back to quadrant views
-            return RedirectToAction("Quadrant", "Home");
+            return RedirectToAction("Quadrants", "Home");
         }
 
         //edit a task, pulls in specific ID
@@ -97,7 +97,7 @@ namespace Mission08_Team0414.Controllers
             var recordToEdit = _TaskContext.SubmittedTasks
                 .Single(x => x.TaskId == id);
 
-            ViewBag.Categories = _TaskContext.Category
+            ViewBag.Category = _TaskContext.Category
                 .OrderBy(x => x.CategoryName)
                 .ToList();
             return View("Tasks", recordToEdit);
@@ -110,7 +110,7 @@ namespace Mission08_Team0414.Controllers
             //update the datebase with the new edits
             _TaskContext.EditSubmittedTask(updateresponse);
             //return to view
-            return RedirectToAction("Quadrant", "Home");
+            return RedirectToAction("Quadrants", "Home");
         }
 
     }
