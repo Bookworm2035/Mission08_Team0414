@@ -38,6 +38,7 @@ namespace Mission08_Team0414.Controllers
                     .OrderBy(x => x.CategoryName)
                     .ToList();
                 _TaskContext.AddSubmittedTask(response);
+                
 
                 return View("Confirmation", response);
 
@@ -56,76 +57,76 @@ namespace Mission08_Team0414.Controllers
         //View that displays all the quadrants with tasks?
         public IActionResult Quadrants()
         {
-            //display database
-            var SubmittedTasks = _TaskContext.SubmittedTasks/*.Include(c =>c.Category)*/
+            var SubmittedTasks = _TaskContext.SubmittedTasks
                          .Where(x => x.IsCompleted == false)
                          .OrderBy(x => x.TaskId).ToList();
-            return View();
+            return View(SubmittedTasks);
+        }
+        //delete a task
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            //delete the record by ID num
+            var recordToDelete = _TaskContext.SubmittedTasks
+                .Single(x => x.TaskId == id);
+
+            return View(recordToDelete);
+        }
+        [HttpPost]
+        public IActionResult Delete(SubmittedTask task)
+        {
+            //actually delete it
+            _TaskContext.DeleteSubmittedTask(task);
+
+            return RedirectToAction("Quadrant");
         }
     }
+
 }
-        ////delete a task
-        //[HttpGet]
-        //public IActionResult Delete(int id)
-        //{
-        //    //delete the record by ID num
-        //    var recordToDelete = _TaskContext.Tasks
-        //        .Single(x => x.TaskId == id);
 
-        //    return View(recordToDelete);
-        //}
-        //[HttpPost]
-        //public IActionResult Delete(System.Threading.Tasks.Task task)
-        //{
-        //    //actually delete it
-        //    _TaskContext.Movies.Remove(task);
-        //    _TaskContext.SaveChanges();
-
-        //    return RedirectToAction("Quadrant");
-        //}
         ////edit a task
         //[HttpGet]
         //public IActionResult Edit(int id)
 
-        //{
-        //    var recordToEdit = _TaskContext.Task
-        //        .Single(x => x.TaskId == id);
+//{
+//    var recordToEdit = _TaskContext.Task
+//        .Single(x => x.TaskId == id);
 
 
-        //    ViewBag.Categories = _TaskContext.Categories
-        //        .OrderBy(x => x.CategoryName)
-        //        .ToList();
-        //    return View("Tasks", recordToEdit);
-        //}
-        //[HttpPost]
-        //public IActionResult Edit(System.Threading.Tasks.Task updateresponse)
-        //{
-        //    //update the datebase with the new edits
-        //    _TaskContext.Update(updateresponse);
-        //    _TaskContext.SaveChanges();
-        //    //return to view
-        //    return RedirectToAction("Quadrant", "Home");
-        //}
-        //public IActionResult Add()
-        //{
-        //    return View("Tasks");
-        //}
+//    ViewBag.Categories = _TaskContext.Categories
+//        .OrderBy(x => x.CategoryName)
+//        .ToList();
+//    return View("Tasks", recordToEdit);
+//}
+//[HttpPost]
+//public IActionResult Edit(System.Threading.Tasks.Task updateresponse)
+//{
+//    //update the datebase with the new edits
+//    _TaskContext.Update(updateresponse);
+//    _TaskContext.SaveChanges();
+//    //return to view
+//    return RedirectToAction("Quadrant", "Home");
+//}
+//public IActionResult Add()
+//{
+//    return View("Tasks");
+//}
 
-    //        ViewBag.Categories = _TaskContext.Categories
-    //            .OrderBy(x => x.CategoryName)
-    //            .ToList();
-    //        return View("Tasks", recordToEdit);
-    //    }
-    //    [HttpPost]
-    //    public IActionResult Edit(Task updateresponse)
-    //    {
-    //        //update the datebase with the new edits
-    //        _TaskContext.Update(updateresponse);
-    //        _TaskContext.SaveChanges();
-    //        //return to view
-    //        return RedirectToAction("Quadrant", "Home");
-    //    }
-    //    public IActionResult Add()
-    //    {
-    //        return View("Tasks");
-    //    }
+//        ViewBag.Categories = _TaskContext.Categories
+//            .OrderBy(x => x.CategoryName)
+//            .ToList();
+//        return View("Tasks", recordToEdit);
+//    }
+//    [HttpPost]
+//    public IActionResult Edit(Task updateresponse)
+//    {
+//        //update the datebase with the new edits
+//        _TaskContext.Update(updateresponse);
+//        _TaskContext.SaveChanges();
+//        //return to view
+//        return RedirectToAction("Quadrant", "Home");
+//    }
+//    public IActionResult Add()
+//    {
+//        return View("Tasks");
+//    }

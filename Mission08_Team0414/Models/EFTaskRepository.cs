@@ -21,6 +21,13 @@ namespace Mission08_Team0414.Models
             _context.Add(task);
             _context.SaveChanges();
         }
+
+        public void DeleteSubmittedTask(SubmittedTask task)
+        {
+            _context.Remove(task);
+            _context.SaveChanges();
+        }
+
         //public void AddTask(SubmittedTask task)
         //{
         //    _context.Add(task);
