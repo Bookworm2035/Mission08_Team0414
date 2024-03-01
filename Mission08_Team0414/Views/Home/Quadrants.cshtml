@@ -4,14 +4,16 @@
 @{
 }
 
-<h2>Put quadrants here</h2>
+@* Access the Model for use in the Quadrants View *@
 
 @model List<SubmittedTask>
 
+@* Grid layout of the Time Management Matrix*@
+@* First row in the grid *@
 <div class="container">
     <div class="row">
         <div class="col-4 border">
-            Time Management Matrix
+            <em>Time Management Matrix</em>
         </div>
         <div class="col-4 border">
             Urgent
@@ -21,46 +23,56 @@
         </div>
     </div>
 </div>
+@* Second row in the grid *@
 <div class="container">
     <div class="row">
         <div class="col-4 border">
             Important
         </div>
         <div class="col-4 border">
+            @* Output all tasks that are Urgent and Important *@
             @foreach (var task in Model.Where(task => task.Quadrant == 1))
             {
                 <div>@task.TaskName</div>
+                @* Edit and Delete buttons *@
                 <a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@task.TaskId">Edit</a>
                 <a class="btn btn-info" asp-controller="Home" asp-action="Delete" asp-route-id="@task.TaskId">Delete</a>
             }
         </div>
         <div class="col-4 border">
+            @* Output all tasks that are Important and not urgent *@
             @foreach (var task in Model.Where(task => task.Quadrant == 2))
             {
                 <div>@task.TaskName</div>
+                @* Edit and Delete buttons *@
                 <a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@task.TaskId">Edit</a>
                 <a class="btn btn-info" asp-controller="Home" asp-action="Delete" asp-route-id="@task.TaskId">Delete</a>
             }
         </div>
     </div>
 </div>
+@* Third row in the grid *@
 <div class="container">
     <div class="row">
         <div class="col-4 border">
             Not Important
         </div>
         <div class="col-4 border">
+            @* Output all tasks that are Urgent and not important*@
             @foreach (var task in Model.Where(task => task.Quadrant == 3))
             {
                 <div>@task.TaskName</div>
+                @* Edit and Delete buttons *@
                 <a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@task.TaskId">Edit</a>
                 <a class="btn btn-info" asp-controller="Home" asp-action="Delete" asp-route-id="@task.TaskId">Delete</a>
             }
         </div>
         <div class="col-4 border">
+            @* Output all tasks that are not urgent and not important *@
             @foreach (var task in Model.Where(task => task.Quadrant == 4))
             {
                 <div>@task.TaskName</div>
+                @* Edit and Delete buttons *@
                 <a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@task.TaskId">Edit</a>
                 <a class="btn btn-info" asp-controller="Home" asp-action="Delete" asp-route-id="@task.TaskId">Delete</a>
             }
@@ -69,7 +81,7 @@
 </div>
 
 <script>
-    // only uncompleted tasks are on this view
+    // Only display incomplete tasks
     $(document).ready(function () {
         $('select[name="IsCompleted"]').change(function () {
             if ($(this).val() === 'true') {
