@@ -11,11 +11,12 @@ namespace Mission08_Team0414.Models
             _context = temp;
         }
 
+        // Defining properties
         public List<SubmittedTask> SubmittedTasks => _context.SubmittedTasks.ToList();
         public List<Category> Category => _context.Category.ToList();
 
-        //List<SubmittedTask> ITaskRepository.SubmittedTasks => throw new NotImplementedException();
-
+        
+        // Repository methods
         public void AddSubmittedTask(SubmittedTask task)
         {
             _context.Add(task);

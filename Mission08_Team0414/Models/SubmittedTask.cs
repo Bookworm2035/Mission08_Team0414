@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Mission08_Team0414.Models
 {
+    // Create data table and columns
     public class SubmittedTask
     {
         [Key]
