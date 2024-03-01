@@ -40,6 +40,7 @@ namespace Mission08_Team0414.Controllers
                     .OrderBy(x => x.CategoryName)
                     .ToList();
                 _TaskContext.AddSubmittedTask(response);
+                
 
                 return View("Confirmation", response);
 
